@@ -1,0 +1,229 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="AML.UI.Administrator.Site" %>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> |
+        <asp:Literal ID="litSiteTitle" runat="server" Text="المحتوى العربي"></asp:Literal>
+    </title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <%--<webopt:bundlereference runat="server" path="~/Content/css" />--%>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta charset="utf-8">
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicons -->
+    <link href="img/apple-touch-icon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Libraries CSS Files -->
+    <link href="../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../lib/animate/animate.min.css" rel="stylesheet">
+    <link href="../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="../lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link href="../css/style.css" rel="stylesheet">
+
+
+    <style type="text/css">
+        .carousel-content p, h2 {
+            direction: rtl;
+            font-family: 'Droid Arabic Kufi';
+        }
+
+        #nav-menu-container a {
+            font-family: 'Droid Arabic Kufi';
+        }
+
+        .nav-menu > li {
+            float: right;
+        }
+
+        .about-cols {
+            direction: rtl;
+        }
+
+        #services .icon {
+            float: right;
+        }
+
+        #services .title, #services .description {
+            margin-left: 0;
+            margin-right: 60px;
+            text-align: right;
+        }
+
+        .title, h1, h2, h3, h4, h5, h6, body, #skills .progress .skill {
+            font-family: 'Droid Arabic Kufi';
+        }
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 999; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 1% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+        #finishedItems {
+            padding: 60px 0;
+        }
+    </style>
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" Path="~/" />
+                <asp:ScriptReference Name="bootstrap" Path="~/" />
+
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+        <!--==========================
+      Header
+    ============================-->
+        <header id="header" style="background-color: black;">
+            <div class="container-fluid">
+                <nav id="nav-menu-container">
+                    <ul class="nav-menu">
+                        <li><a href="<% = Page.ResolveUrl("~/Administrator/CategoryAdd") %>">النوع الرئيسي</a></li>
+                        <li><a href="<% = Page.ResolveUrl("~/Administrator/SubCategoryAdd") %>">النوع الفرعي</a></li>
+                        <li><a href="<% = Page.ResolveUrl("~/Administrator/AddNews") %>">إضافة أخبار</a></li>
+                        <li><a href="<% = Page.ResolveUrl("~/Administrator/AddFAQs") %>">أسئلة متكررة</a></li>
+                        <li><a href="<% = Page.ResolveUrl("~/Administrator/AddEntity") %>">الجهات</a></li>
+                        <li><a href="<% = Page.ResolveUrl("~/Administrator/PendingInquiries") %>">الإستفسارات</a></li>
+                        <li><a href="<% = Page.ResolveUrl("~/Default") %>">العودة للموقع</a></li>
+                    </ul>
+                </nav>
+                <!-- #nav-menu-container -->
+                <div id="logo" class="pull-left">
+                    <h1><a href="#intro" class="scrollto">Administrator</a></h1>
+                    <!-- Uncomment below if you prefer to use an image logo -->
+                    <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
+                </div>
+
+
+            </div>
+        </header>
+        <!-- #header -->
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+
+        <asp:LoginView runat="server" ViewStateMode="Disabled" Visible="false">
+            <AnonymousTemplate>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a runat="server" href="~/Account/Register">Register</a></li>
+                    <li><a runat="server" href="~/Account/Login">Log in</a></li>
+                </ul>
+            </AnonymousTemplate>
+            <LoggedInTemplate>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello!</a></li>
+                    <li>
+                        <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" />
+                    </li>
+                </ul>
+            </LoggedInTemplate>
+        </asp:LoginView>
+        <style>
+            #footer .footer-top .footer-info h3 {
+                font-family: 'Droid Arabic Kufi' !important;
+            }
+
+            #footer {
+                text-align: right;
+                direction: rtl;
+            }
+        </style>
+
+        <footer id="footer">
+            <div class="container">
+                <div class="copyright">
+                    &copy; Copyright <strong>صفحة المحتوى</strong>. All Rights Reserved
+                </div>
+            </div>
+        </footer>
+        <!-- #footer -->
+
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+        <!-- Uncomment below i you want to use a preloader -->
+        <!-- <div id="preloader"></div> -->
+        <!-- JavaScript Libraries -->
+        <script src="../lib/jquery/jquery.min.js"></script>
+        <script src="../lib/jquery/jquery-migrate.min.js"></script>
+        <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../lib/easing/easing.min.js"></script>
+        <script src="../lib/superfish/hoverIntent.js"></script>
+        <script src="../lib/superfish/superfish.min.js"></script>
+        <script src="../lib/wow/wow.min.js"></script>
+        <script src="../lib/waypoints/waypoints.min.js"></script>
+        <script src="../lib/counterup/counterup.min.js"></script>
+        <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="../lib/isotope/isotope.pkgd.min.js"></script>
+        <script src="../lib/lightbox/js/lightbox.min.js"></script>
+        <script src="../lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+        <!-- Contact Form JavaScript File -->
+        <script src="../contactform/contactform.js"></script>
+
+        <!-- Template Main Javascript File -->
+        <script src="../js/main.js"></script>
+    </form>
+</body>
+</html>

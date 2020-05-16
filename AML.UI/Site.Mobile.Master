@@ -1,0 +1,278 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="AML.UI.SiteMaster" %>
+
+<%@ Import Namespace="AML.Domain.Application" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> |<asp:Literal runat="server" ID="litSiteTitle" Text="المنصة الوطنية لمواجهة غسل الأموال ومكافحة تمويل الإرهاب "></asp:Literal></title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <%--<webopt:bundlereference runat="server" path="~/Content/css" />--%>
+    <%--<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />--%>
+    <meta charset="utf-8">
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicons -->
+    <link href="https://www.economy.gov.ae/Style%20Library/new/Images/favicon.ico" rel="icon">
+    <link href="<%=Page.ResolveUrl("~/img/apple-touch-icon.png") %>" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="<%= Page.ResolveUrl("~/lib/bootstrap/css/bootstrap.min.css")%>" rel="stylesheet">
+
+    <!-- Libraries CSS Files -->
+    <link href="<%= Page.ResolveUrl("~/lib/font-awesome/css/font-awesome.min.css")%>" rel="stylesheet">
+    <link href="<%= Page.ResolveUrl("~/lib/animate/animate.min.css") %>" rel="stylesheet">
+    <link href="<%= Page.ResolveUrl("~/lib/ionicons/css/ionicons.min.css") %>" rel="stylesheet">
+    <link href="<%= Page.ResolveUrl("~/lib/owlcarousel/assets/owl.carousel.min.css") %>" rel="stylesheet">
+    <link href="<%= Page.ResolveUrl("~/lib/lightbox/css/lightbox.min.css")%>" rel="stylesheet">
+
+
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="<%= Page.ResolveUrl("~/" + Stylesheet) %>" />
+    <!-- =======================================================
+      Theme Name: وزارة الإقتصاد
+      Theme URL: https://bootstrapmade.com/وزارة الإقتصاد-bootstrap-business-template/
+      Author: BootstrapMade.com
+      License: https://bootstrapmade.com/license/
+    ======================================================= -->
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" Path="~/" />
+                <asp:ScriptReference Name="bootstrap" Path="~/" />
+
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+        <!--==========================
+      Header
+    ============================-->
+        <style>
+            
+            #nav-menu-containe2 li a {
+                color: black;
+            }
+        </style>
+        <div style="background-color: white; width: 100%; display: block; top: 0; vertical-align: top; padding: 10px 90px; position: fixed; height: 70px; z-index: 1000;">
+            <div id="logo" class="pull-left">
+                <div>
+                    <a href="#intro" class="scrollto">
+                        <img style="max-height: 50px;" src="../img/MOE_Logo_Ar.png" /></a>
+                </div>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
+            </div>
+            <div class="container-fluid  pull-right d-lg-block" style="color: black; width: 50%; padding-top: 10px;display: none;">
+                <nav id="nav-menu-containe2">
+                    <ul class="nav-menu">
+                        <li runat="server" id="liManage"><a href="<%= Page.ResolveUrl("~/Account/Manage") %>"><asp:Literal ID="litLastName2" runat="server"></asp:Literal><span class="fa fa-user-circle" aria-hidden="true" style="padding-left: 10px; padding-right: 10px;" runat="server" id="span3"></span></a></li>
+                        <li runat="server" id="liFAQs"><a href="<%= Page.ResolveUrl("~/FAQs") %>"><asp:Literal ID="Literal3" runat="server" Text="أسئلة متكررة"></asp:Literal><span class="fa fa-question-circle" aria-hidden="true" style="padding-left: 10px; padding-right: 10px;" runat="server" id="span4"></span></a></li>
+                        <li runat="server" id="li1"><a href="<%= Page.ResolveUrl("~/Account/Logout") %>"><asp:Literal ID="Literal4" runat="server" Text="الخروج"></asp:Literal><span class="fa fa-sign-out" aria-hidden="true" style="padding-left: 10px; padding-right: 10px;" runat="server" id="span5"></span></a></li>
+                        <li>
+                            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" Text="--" meta:resourcekey="btnLangResource1"></asp:LinkButton></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <header id="header" style="background-color: black; top: 70px;">
+            <div class="container-fluid">
+                <nav id="nav-menu-container">
+                    <ul class="nav-menu">
+                        <li class="menu-active"><a href="<% = Page.ResolveUrl("~/Default#intro") %>">
+                            <asp:Literal Text="الرئيسية" runat="server" meta:resourcekey="LiteralResource1"></asp:Literal></a></li>
+                        <asp:Repeater ID="topMenu" runat="server">
+                            <ItemTemplate>
+                                <%#  (((IList<SubCategory>)Eval("SubCategories")) != null && ((IList<SubCategory>)Eval("SubCategories")).Count > 0) ?
+    "<li class=\"menu-has-children\"><a href=\"" + ( ((PageContentType)Eval("ContentType")).Id == 1 ? Page.ResolveUrl("~/CategoryPageContent/Index?Id=") : Page.ResolveUrl("~/CategoryPageContent/Media?Id=")) + Eval("Id") + "\">" + Eval("Name") + "</a>"
+                        + "<ul>"
+                        +  SomeExtractingMethodLikeEval(int.Parse(Eval("Id").ToString()))
++ "</ul>"
++ "</li>"
+    :
+    "<li><a href=\""
+                                                + Page.ResolveUrl("~/"  +  ( ((PageContentType)Eval("ContentType")).Id == 1 ? Page.ResolveUrl("~/CategoryPageContent/Index?Id=") : Page.ResolveUrl("~/CategoryPageContent/Media?Id=")) + Eval("Id"))
+                                                + "\">"
+                                                + Eval("Name")
+                                                + "</a></li>"
+                                %>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                        <%--       <li><a href="<% = Page.ResolveUrl("~/Definitions") %>">التعريفات</a></li>
+                        <li><a href="<% = Page.ResolveUrl("~/Documents") %>">الوثائق</a></li>
+                        <li><a href="#skills">أسئلة متكررة</a></li>
+                        <li><a href="#team">Team</a></li>
+                    <li class="menu-has-children">
+                        <a href="javascript:return(0)">Drop Down</a>
+                        <ul>
+                            <li><a href="#">Drop Down 1</a></li>
+                            <li><a href="#">Drop Down 3</a></li>
+                            <li><a href="#">Drop Down 4</a></li>
+                            <li><a href="#">Drop Down 5</a></li>
+                        </ul>
+                    </li>
+                        <li><a href="#contact">توصيات مجموعة العمل المالي</a></li>
+                        <li><a href="#finishedItems">مواد تعليمية</a></li>--%>
+                        <%--<li>&nbsp;&nbsp;&nbsp;</li>--%>
+                        <li class="d-lg-none"><a href="<%= Page.ResolveUrl("~/Account/Manage") %>"><span class="fa fa-user-circle" aria-hidden="true" style="padding-left: 10px; padding-right: 10px;" runat="server" id="spanIcon"></span>
+                            <span class="d-md-none">
+                                <asp:Literal ID="litLastName" runat="server"></asp:Literal></span></a></li>
+                        <li style="display: none;"><a href="<%= Page.ResolveUrl("~/FAQs") %>"><span class="fa fa-question-circle" aria-hidden="true" style="padding-left: 10px; padding-right: 10px;" runat="server" id="span2"></span>
+                            <span class="d-md-none">
+                                <asp:Literal ID="litFAQs" runat="server" Text="أسئلة متكررة"></asp:Literal></span></a></li>
+                        <li runat="server" id="liLogout" class="d-lg-none"><a href="<%= Page.ResolveUrl("~/Account/Logout") %>"><span class="fa fa-sign-out" aria-hidden="true" style="padding-left: 10px; padding-right: 10px;" runat="server" id="span1"></span>
+                            <span>
+                                <asp:Literal ID="Literal1" runat="server" Text="الخروج"></asp:Literal></span></a></li>
+                        <li class="d-lg-none">
+                            <asp:LinkButton ID="btnLang" runat="server" OnClick="LinkButton1_Click" Text="--" meta:resourcekey="btnLangResource1"></asp:LinkButton></li>
+                    </ul>
+                </nav>
+                <!-- #nav-menu-container -->
+
+            </div>
+        </header>
+        <!-- #header -->
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+
+        <%--<asp:LoginView runat="server" ViewStateMode="Disabled" Visible="False">
+            <AnonymousTemplate>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a runat="server" href="~/Account/Register">Register</a> </li>
+                    <li><a runat="server" href="~/Account/Login">Log in</a> </li>
+                </ul>
+            </AnonymousTemplate>
+            <LoggedInTemplate>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello!</a> </li>
+                    <li>
+                        <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" meta:resourcekey="LoginStatusResource1" />
+                    </li>
+                </ul>
+            </LoggedInTemplate>
+        </asp:LoginView>--%>
+        <footer id="footer">
+            <%--  <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-3 col-md-6 footer-info">
+                            <h3>وزارة الإقتصاد</h3>
+                            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 footer-links">
+                            <h4>Useful Links</h4>
+                            <ul>
+                                <li><i class="ion-ios-arrow-right"></i><a href="#">Home</a></li>
+                                <li><i class="ion-ios-arrow-right"></i><a href="#">About us</a></li>
+                                <li><i class="ion-ios-arrow-right"></i><a href="#">Services</a></li>
+                                <li><i class="ion-ios-arrow-right"></i><a href="#">Terms of service</a></li>
+                                <li><i class="ion-ios-arrow-right"></i><a href="#">Privacy policy</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 footer-contact">
+                            <h4>Contact Us</h4>
+                            <p>
+                                A108 Adam Street
+                                <br>
+                                New York, NY 535022<br>
+                                United States
+                                <br>
+                                <strong>Phone:</strong> +1 5589 55488 55<br>
+                                <strong>Email:</strong> info@example.com<br>
+                            </p>
+
+                            <div class="social-links">
+                                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                                <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                                <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 footer-newsletter">
+                            <h4>Our Newsletter</h4>
+                            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
+                            <div>
+                                <input type="email" name="email"><input type="submit" value="Subscribe">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>--%>
+
+            <div class="container">
+                <div class="copyright">
+                    &copy; Copyright <strong>وزارة الإقتصاد</strong>. All Rights Reserved
+                </div>
+                <div class="credits">
+                    <!--
+                  All the links in the footer should remain intact.
+                  You can delete the links only if you purchased the pro version.
+                  Licensing information: https://bootstrapmade.com/license/
+                  Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=وزارة الإقتصاد
+                
+                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>-->
+                </div>
+            </div>
+        </footer>
+        <!-- #footer -->
+
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+        <!-- Uncomment below i you want to use a preloader -->
+        <!-- <div id="preloader"></div> -->
+        <!-- JavaScript Libraries -->
+        <script src="<%= Page.ResolveUrl("~/lib/jquery/jquery.min.js") %>"></script>
+        <script src="<%= Page.ResolveUrl("~/lib/jquery/jquery-migrate.min.js") %>"></script>
+        <script src="<%= Page.ResolveUrl("~/lib/bootstrap/js/bootstrap.bundle.min.js") %>"></script>
+        <script src="<%= Page.ResolveUrl("~/lib/easing/easing.min.js") %>"></script>
+        <script src="<%= Page.ResolveUrl("~/lib/superfish/hoverIntent.js") %>"></script>
+        <script src="<%= Page.ResolveUrl("~/lib/superfish/superfish.min.js") %>"></script>
+        <script src="<%= Page.ResolveUrl("~/lib/wow/wow.min.js") %>"></script>
+        <script src="<%= Page.ResolveUrl("~/lib/waypoints/waypoints.min.js") %>"></script>
+        <script src="<%= Page.ResolveUrl("~/lib/counterup/counterup.min.js") %>"></script>
+        <script src="<%= Page.ResolveUrl("~/lib/owlcarousel/owl.carousel.min.js") %>"></script>
+        <script src="<%= Page.ResolveUrl("~/lib/isotope/isotope.pkgd.min.js") %>"></script>
+        <script src="<%= Page.ResolveUrl("~/lib/lightbox/js/lightbox.min.js") %>"></script>
+        <script src="<%= Page.ResolveUrl("~/lib/touchSwipe/jquery.touchSwipe.min.js") %>"></script>
+        <!-- Contact Form JavaScript File -->
+        <script src="<%= Page.ResolveUrl("~/contactform/contactform.js") %>"></script>
+
+        <!-- Template Main Javascript File -->
+        <script src="<%= Page.ResolveUrl("~/js/main.js") %>"></script>
+
+
+    </form>
+</body>
+</html>

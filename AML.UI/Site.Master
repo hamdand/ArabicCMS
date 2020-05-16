@@ -1,0 +1,196 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="AML.UI.SiteMaster" %>
+
+<%@ Import Namespace="AML.Domain.Application" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> |<asp:Literal runat="server" ID="litSiteTitle" Text="المنصة العربية"></asp:Literal></title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <%--<webopt:bundlereference runat="server" path="~/Content/css" />--%>
+    <%--<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />--%>
+    <meta charset="utf-8">
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicons -->
+    <link href="<%=Page.ResolveUrl("~/img/apple-touch-icon.png") %>" rel="icon">
+    <link href="<%=Page.ResolveUrl("~/img/apple-touch-icon.png") %>" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="<%= Page.ResolveUrl("~/lib/bootstrap/css/bootstrap.min.css")%>" rel="stylesheet">
+
+    <!-- Libraries CSS Files -->
+    <link href="<%= Page.ResolveUrl("~/lib/font-awesome/css/font-awesome.min.css")%>" rel="stylesheet">
+    <link href="<%= Page.ResolveUrl("~/lib/animate/animate.min.css") %>" rel="stylesheet">
+    <link href="<%= Page.ResolveUrl("~/lib/ionicons/css/ionicons.min.css") %>" rel="stylesheet">
+    <link href="<%= Page.ResolveUrl("~/lib/owlcarousel/assets/owl.carousel.min.css") %>" rel="stylesheet">
+    <link href="<%= Page.ResolveUrl("~/lib/lightbox/css/lightbox.min.css")%>" rel="stylesheet">
+
+
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="<%= Page.ResolveUrl("~/" + Stylesheet) %>" />
+    </head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" Path="~/" />
+                <asp:ScriptReference Name="bootstrap" Path="~/" />
+
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+        <!--==========================
+      Header
+    ============================-->
+        <style>
+            #nav-menu-containe2 li a {
+                color: black;
+            }
+        </style>
+        <div style="background-color: white; width: 100%; display: block; top: 0; vertical-align: top; padding: 10px 90px; position: fixed; height: 70px; z-index: 1000;">
+            <div id="logo" class="pull-left">
+                <div>
+                    <a href="#intro" class="scrollto">
+                        <img style="max-height: 50px;" src="<%= Page.ResolveUrl("~/img/logo.png") %>" /></a>
+                </div>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
+            </div>
+            <div class="container-fluid  pull-right d-lg-block" style="color: black; width: 50%; padding-top: 10px; display: none;">
+                <nav id="nav-menu-containe2">
+                    <ul class="nav-menu">
+                        <li runat="server" id="liManage"><a href="<%= Page.ResolveUrl("~/Account/Manage") %>">
+                            <asp:Literal ID="litLastName2" runat="server"></asp:Literal><span class="fa fa-user-circle" aria-hidden="true" style="padding-left: 10px; padding-right: 10px;" runat="server" id="span3"></span></a></li>
+                        <li runat="server" id="liFAQs"><a href="<%= Page.ResolveUrl("~/FAQs") %>">
+                            <asp:Literal ID="Literal3" runat="server" Text="أسئلة متكررة"></asp:Literal><span class="fa fa-question-circle" aria-hidden="true" style="padding-left: 10px; padding-right: 10px;" runat="server" id="span4"></span></a></li>
+                        <li runat="server" id="li1"><a href="<%= Page.ResolveUrl("~/Account/Logout") %>">
+                            <asp:Literal ID="Literal4" runat="server" Text="الخروج"></asp:Literal><span class="fa fa-sign-out" aria-hidden="true" style="padding-left: 10px; padding-right: 10px;" runat="server" id="span5"></span></a></li>
+                        <li runat="server" id="liAdminSite" visible="false"><a href="<%= Page.ResolveUrl("~/Administrator/ManageUsers") %>">
+                            <span class="fa fa-cogs" aria-hidden="true" style="padding-left: 10px; padding-right: 10px;" runat="server" id="span1"></span></a></li>
+                        <li>
+                            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" Text="--" meta:resourcekey="btnLangResource1"></asp:LinkButton></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <header id="header" style="background-color: black; top: 70px;">
+            <div class="container-fluid">
+                <nav id="nav-menu-container">
+                    <ul class="nav-menu">
+                        <li class="<%: HttpContext.Current.Request.Url.AbsolutePath.ToLower().EndsWith("default") ? "menu-active" : "menu" %>"><a href="<% = Page.ResolveUrl("~/Default#intro") %>">
+                            <asp:Literal Text="الرئيسية" runat="server" meta:resourcekey="LiteralResource1"></asp:Literal></a></li>
+                        <asp:Repeater ID="topMenu" runat="server">
+                            <ItemTemplate>
+                                <%#  (((IList<SubCategory>)Eval("SubCategories")) != null && ((IList<SubCategory>)Eval("SubCategories")).Count > 0) ?
+    "<li class=\"menu-has-children\"><a href=\"" + ( ((PageContentType)Eval("ContentType")).Id == 1 ? Page.ResolveUrl("~/CategoryPageContent/Index?Id=") : Page.ResolveUrl("~/CategoryPageContent/Media?Id=")) + Eval("Id") + "\">" + Eval("Name") + "</a>"
+                        + "<ul>"
+                        +  SomeExtractingMethodLikeEval(int.Parse(Eval("Id").ToString()))
++ "</ul>"
++ "</li>"
+    :
+    "<li class=" + (HttpContext.Current.Request.Url.PathAndQuery.Equals(("/"  +  ( ((PageContentType)Eval("ContentType")).Id == 1 ? ("CategoryPageContent/Index?Id=") : ("CategoryPageContent/Media?Id=")) + Eval("Id"))) ?  "menu-active" : "menu") 
+    +  "><a href=\""
+                                                + Page.ResolveUrl("~/"  +  ( ((PageContentType)Eval("ContentType")).Id == 1 ? Page.ResolveUrl("~/CategoryPageContent/Index?Id=") : Page.ResolveUrl("~/CategoryPageContent/Media?Id=")) + Eval("Id"))
+                                                + "\">"
+                                                + Eval("Name")
+                                                + "</a></li>"
+                                %>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                        <li runat="server" id="divInquiry" class='<%= Request.Url.AbsolutePath.ToLower().Contains("inquiries") ? "menu-has-children menu-active" : "menu-has-children" %>'>
+                            <a href="<%= Page.ResolveUrl("~/Inquiries/Inquiries") %>">
+                                <asp:Literal runat="server" ID="litInquiries" Text="الإستفسارات"></asp:Literal></a>
+                            <ul>
+                                <li><a href="<%: Page.ResolveUrl("~/Inquiries/InquirySubmit") %>">
+                                    <asp:Literal ID="submitInquiry" runat="server" Text="إنشاء إستفسار"></asp:Literal></a></li>
+                            </ul>
+                        </li>
+                        <li class="d-lg-none"><a href="<%= Page.ResolveUrl("~/Account/Manage") %>">
+                            <span class="d-md-none">
+                                <asp:Literal ID="litLastName" runat="server"></asp:Literal></span></a></li>
+                        <li style="display: none;"><a href="<%= Page.ResolveUrl("~/FAQs") %>">
+                            <span class="d-md-none">
+                                <asp:Literal ID="litFAQs" runat="server" Text="أسئلة متكررة"></asp:Literal></span></a></li>
+                        <li runat="server" id="liLogout" class="d-lg-none"><a href="<%= Page.ResolveUrl("~/Account/Logout") %>">
+                            <span>
+                                <asp:Literal ID="Literal1" runat="server" Text="الخروج"></asp:Literal></span></a></li>
+                        <li class="d-lg-none">
+                            <asp:LinkButton ID="btnLang" runat="server" OnClick="LinkButton1_Click" Text="--" meta:resourcekey="btnLangResource1"></asp:LinkButton></li>
+                    </ul>
+                </nav>
+                <!-- #nav-menu-container -->
+
+            </div>
+        </header>
+        <!-- #header -->
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+
+        
+        <footer id="footer">
+            
+
+            <div class="container">
+                <div class="copyright">
+                    &copy; Copyright <strong>صفحة المحتوى</strong>. All Rights Reserved
+                </div>
+                <div class="credits">
+                    
+                </div>
+            </div>
+        </footer>
+        <!-- #footer -->
+
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+        <!-- Uncomment below i you want to use a preloader -->
+        <!-- <div id="preloader"></div> -->
+        <!-- JavaScript Libraries -->
+        <script src="<%= Page.ResolveUrl("~/lib/jquery/jquery.min.js") %>"></script>
+        <script src="<%= Page.ResolveUrl("~/lib/jquery/jquery-migrate.min.js") %>"></script>
+        <script src="<%= Page.ResolveUrl("~/lib/bootstrap/js/bootstrap.bundle.min.js") %>"></script>
+        <script src="<%= Page.ResolveUrl("~/lib/easing/easing.min.js") %>"></script>
+        <script src="<%= Page.ResolveUrl("~/lib/superfish/hoverIntent.js") %>"></script>
+        <script src="<%= Page.ResolveUrl("~/lib/superfish/superfish.min.js") %>"></script>
+        <script src="<%= Page.ResolveUrl("~/lib/wow/wow.min.js") %>"></script>
+        <script src="<%= Page.ResolveUrl("~/lib/waypoints/waypoints.min.js") %>"></script>
+        <script src="<%= Page.ResolveUrl("~/lib/counterup/counterup.min.js") %>"></script>
+        <script src="<%= Page.ResolveUrl("~/lib/owlcarousel/owl.carousel.min.js") %>"></script>
+        <script src="<%= Page.ResolveUrl("~/lib/isotope/isotope.pkgd.min.js") %>"></script>
+        <script src="<%= Page.ResolveUrl("~/lib/lightbox/js/lightbox.min.js") %>"></script>
+        <script src="<%= Page.ResolveUrl("~/lib/touchSwipe/jquery.touchSwipe.min.js") %>"></script>
+        <!-- Contact Form JavaScript File -->
+        <script src="<%= Page.ResolveUrl("~/contactform/contactform.js") %>"></script>
+
+        <!-- Template Main Javascript File -->
+        <script src="<%= Page.ResolveUrl("~/js/main.js") %>"></script>
+
+
+    </form>
+</body>
+</html>
